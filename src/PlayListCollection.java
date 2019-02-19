@@ -6,6 +6,7 @@ public class PlayListCollection {
 
 	public PlayListCollection() {
 		playListMap = new HashMap<>();
+		playListMap.put("main", new PlayList("main"));
 	}
 
 	public Map<String, PlayList> getPlayListMap() {
