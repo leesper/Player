@@ -38,11 +38,11 @@ public class TestDemo {
 		}
 	}
 	
-	public static void playListManageMenu() {
+	public static void playListMenu() {
 		System.out.println("*********************");
 		System.out.println("** 播放列表管理 **");
-		System.out.println("1--播放列表管理");
-		System.out.println("2--播放器管理");
+		System.out.println("1--将歌曲添加到主播放列表");
+		System.out.println("2--将歌曲添加到普通播放列表");
 		System.out.println("3--通过歌曲id查询播放列表中的歌曲");
 		System.out.println("4--通过歌曲名称查询播放列表中的歌曲");
 		System.out.println("5--修改播放列表中的歌曲");
@@ -53,4 +53,12 @@ public class TestDemo {
 		System.out.println("*********************");
 		System.out.println("请输入对应的数字对播放列表进行管理：");
 	}
+	
+	public static void playerMenu() {}
+	
+	public void testSong() {}
+	
+	public void testPlayList() {}
+	
+	public void testPlayListCollection() {}
 }

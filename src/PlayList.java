@@ -34,7 +34,7 @@ public class PlayList {
 
 //	public Song searchSongByName(String n) {}
 
-	public void updateSong(String id,Song song) {}
+	public void updateSong(Song song) {}
 
 	public void deleteSong(String id) {}
 
