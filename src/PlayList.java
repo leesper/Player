@@ -30,9 +30,9 @@ public class PlayList {
 
 	public void displayAllSong() {}
 
-//	public Song searchSongById(String id) {}
+	public Song searchSongById(String id) {}
 
-//	public Song searchSongByName(String n) {}
+	public Song searchSongByName(String n) {}
 
 	public void updateSong(Song song) {}
 
