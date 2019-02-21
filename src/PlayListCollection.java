@@ -18,13 +18,28 @@ public class PlayListCollection {
 		this.playListMap = playListMap;
 	}
 	
-	public void addPlayList(PlayList playList) {}
+	public void addPlayList(PlayList playList) {
+		getPlayListMap().put(playList.getPlayListName(), playList);
+	}
 
-	public void deletePlayList(PlayList playList) {}
+	public void deletePlayList(PlayList playList) {
+		getPlayListMap().remove(playList.getPlayListName());
+	}
 
-//	public PlayList searchPlayListByName(String playListName) {}
+	public PlayList searchPlayListByName(String playListName) {
+		for (PlayList playList : getPlayListMap().values()) {
+			if (playList.getPlayListName().equals(playListName)) {
+				return playList;
+			}
+		}
+		return null;
+	}
 
-	public void displayPlayListName() {}
+	public void displayPlayListName() {
+		for (String name : playListMap.keySet()) {
+			System.out.println(name);
+		}
+	}
 	
 	public void addSongToPlayList(boolean isMain) {
 		int numOfSongs = 0;
@@ -110,5 +125,54 @@ public class PlayListCollection {
 		} else {
 			System.out.printf("该歌曲在播放列表%s中不存在！\n", playListName);
 		}
+	}
+	
+	public void updateSongInfo() {
+		Scanner s = new Scanner(System.in);
+		System.out.println("请输入要修改的歌曲id：");
+		String songID = s.next();
+		System.out.println("请输入修改后的歌曲名称：");
+		String songName = s.next();
+		System.out.println("请输入修改后的演唱者：");
+		String singer = s.next();
+		for (PlayList l : getPlayListMap().values()) {
+			Song song = l.searchSongById(songID);
+			song.setName(songName);
+			song.setSinger(singer);
+			l.updateSong(song);
+		}
+		System.out.println("修改成功！");
+	}
+	
+	public void displayAllSongsInPlayList() {
+		Scanner s = new Scanner(System.in);
+		System.out.println("请输入要显示的播放列表名称：");
+		String playListName = s.next();
+		System.out.println("播放列表中的所有歌曲为：");
+		PlayList list = searchPlayListByName(playListName);
+		if (list != null) {
+			list.displayAllSong();
+		}
+	}
+	
+	public void removeSong() {
+		Scanner s = new Scanner(System.in);
+		System.out.println("请输入要删除的歌曲id：");
+		String songID = s.next();
+		for (PlayList list : getPlayListMap().values()) {
+			list.deleteSong(songID);
+		}
+		System.out.println("删除成功！");
+	}
+	
+	public void exportPlayList() {
+		Scanner s = new Scanner(System.in);
+		System.out.println("请输入要导出歌单的播放列表名称：");
+		String playListName = s.next();
+		PlayList playList = searchPlayListByName(playListName);
+		if (playList != null) {
+			playList.exportPlayList();
+		}
+		System.out.println("导出成功！");
 	}
 }

@@ -26,13 +26,33 @@ public class PlayList {
 		this.musicList = musicList;
 	}
 	
-	public void addToPlayList(Song song) {}
+	public void addToPlayList(Song song) {
+		musicList.add(song);
+	}
 
-	public void displayAllSong() {}
+	public void displayAllSong() {
+		for (Song song : getMusicList()) {
+			System.out.println(song);
+		}
+	}
 
-	public Song searchSongById(String id) {}
+	public Song searchSongById(String id) {
+		for (Song song : getMusicList()) {
+			if (song.getId().equals(id)) {
+				return song;
+			}
+		}
+		return null;
+	}
 
-	public Song searchSongByName(String n) {}
+	public Song searchSongByName(String n) {
+		for (Song song : getMusicList()) {
+			if (song.getName().equals(n)) {
+				return song;
+			}
+		}
+		return null;
+	}
 
 	public void updateSong(Song song) {}
 

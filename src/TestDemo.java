@@ -75,12 +75,20 @@ public class TestDemo {
 					collection.searchSongByName();
 					break;
 				case 5:
+					System.out.println("修改播放列表中的歌曲");
+					collection.updateSongInfo();
 					break;
 				case 6:
+					System.out.println("删除播放列表中的歌曲");
+					collection.removeSong();
 					break;
 				case 7:
+					System.out.println("显示播放列表中的所有歌曲");
+					collection.displayAllSongsInPlayList();
 					break;
 				case 8:
+					System.out.println("导出歌单");
+					collection.exportPlayList();
 					break;
 				case 9:
 					return;
