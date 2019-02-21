@@ -26,6 +26,7 @@ public class TestDemo {
 					playListMenu();
 					break;
 				case 2:
+					playerMenu();
 					break;
 				case 0:
 					return;
@@ -60,7 +61,23 @@ public class TestDemo {
 				switch (playListCommand) {
 				case 1:
 					System.out.println("将歌曲添加到主播放列表");
-					collection.addSongToPlayList(true);
+					PlayList mainPlayList = collection.searchPlayListByName("主播放列表");
+					if (mainPlayList == null) {
+						System.out.println("找不到主播放列表，添加歌曲失败！");
+						return;
+					}
+					System.out.println("请输入要添加的歌曲的数量：");
+					int numOfSongs = s.nextInt();
+					for (int i = 0; i < numOfSongs; i++) {
+						System.out.printf("请输入第%d首歌曲：\n", i+1);
+						System.out.println("请输入歌曲的id：");
+						String songID = s.next();
+						System.out.println("请输入歌曲的名称：");
+						String songName = s.next();
+						System.out.println("请输入演唱者：");
+						String singer = s.next();
+						mainPlayList.addToPlayList(new Song(songID, songName, singer));
+					}
 					break;
 				case 2:
 					System.out.println("将歌曲添加到普通播放列表");
