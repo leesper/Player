@@ -49,29 +49,12 @@ public class Song {
 		if (getClass() != obj.getClass())
 			return false;
 		Song other = (Song) obj;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
-			return false;
-		if (name == null) {
-			if (other.name != null)
-				return false;
-		} else if (!name.equals(other.name))
-			return false;
-		if (singer == null) {
-			if (other.singer != null)
-				return false;
-		} else if (!singer.equals(other.singer))
-			return false;
-		return true;
+		return id.equals(other.getId()) && name.equals(other.getName()) && singer.equals(other.getSinger());
 	}
 
 	@Override
 	public String toString() {
-		return "歌曲信息 [ID：" + id + ", 名称：" + name + ", 演唱者：" + singer + "]";
+		return "歌曲信息ID：" + id + ", 名称：" + name + ", 演唱者：" + singer;
 	}
-	
-	
 	
 }

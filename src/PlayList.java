@@ -1,7 +1,12 @@
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PlayList {
+public class PlayList implements Serializable {
 	private String playListName;
 	private List<Song> musicList;
 	
@@ -54,9 +59,35 @@ public class PlayList {
 		return null;
 	}
 
-	public void updateSong(Song song) {}
+	public void updateSong(Song song) {
+		Song old = searchSongById(song.getId());
+		if (old != null) {
+			old.setName(song.getName());
+			old.setSinger(song.getSinger());
+		}
+	}
 
-	public void deleteSong(String id) {}
+	public void deleteSong(String id) {
+		Song song = searchSongById(id);
+		if (song != null) {
+			musicList.remove(song);
+		}
+	}
 
-    public void exportPlayList() {}
+    public void exportPlayList() {
+    	try {
+			FileOutputStream fos = new FileOutputStream(getPlayListName() + "的歌单.txt");
+			ObjectOutputStream oos = new ObjectOutputStream(fos);
+			oos.writeObject(this);
+			oos.flush();
+			fos.close();
+			oos.close();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+    	
+    }
 }
